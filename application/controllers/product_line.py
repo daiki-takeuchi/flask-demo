@@ -10,7 +10,7 @@ def index():
     return render_template('product_line/index.html', result=result)
 
 
-@app.route('/detail/<id>')
-def detail(id):
+@app.route('/detail/<product_line_id>')
+def detail(product_line_id):
     product_line = []
     return render_template('product_line/detail.html', result=product_line)

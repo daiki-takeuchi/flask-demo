@@ -22,14 +22,14 @@
       {% for payment in result %}
       <tbody>
         <tr>
-          <td>{loop.counter}</td>
-          <td>{payment.id}</td>
-          <td>{payment.customerNumber}</td>
-          <td>{payment.checkNumber}</td>
-          <td>{payment.paymentDate}</td>
-          <td>{payment.amount}</td>
+          <td>{{ loop.index }}</td>
+          <td>{{ payment.id }}</td>
+          <td>{{ payment.customer_number }}</td>
+          <td>{{ payment.check_number }}</td>
+          <td>{{ payment.payment_date }}</td>
+          <td>{{ payment.amount }}</td>
           <td>
-            <a class="btn btn-default" href="/payment/detail/{payment.id}">detail</a>
+            <a class="btn btn-default" href="/payment/detail/{{ payment.id }}">detail</a>
           </td>
         </tr>
         {% endfor %}

@@ -24,16 +24,16 @@
       <tbody>
       {% for order in result %}
         <tr>
-          <td>{loop.counter}</td>
-          <td>{order.id}</td>
-          <td>{order.orderNumber}</td>
-          <td>{order.orderDate}</td>
-          <td>{order.requiredDate}</td>
-          <td>{order.shippedDate}</td>
-          <td>{order.status}</td>
-          <td>{order.customerNumber}</td>
+          <td>{{ loop.index }}</td>
+          <td>{{ order.id }}</td>
+          <td>{{ order.order_number }}</td>
+          <td>{{ order.order_date }}</td>
+          <td>{{ order.required_date }}</td>
+          <td>{{ order.shipped_date }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.customer_number }}</td>
           <td>
-            <a class="btn btn-default" href="/orders/detail/{order.id}">detail</a>
+            <a class="btn btn-default" href="/orders/detail/{{ order.id }}">detail</a>
           </td>
         </tr>
         {% endfor %}
