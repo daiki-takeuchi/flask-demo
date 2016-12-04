@@ -25,17 +25,17 @@
       <tbody>
       {% for product in result %}
         <tr>
-          <td>{loop.counter}</td>
-          <td>{product.productCode}</td>
-          <td>{product.productName}</td>
-          <td>{product.productLine}</td>
-          <td>{product.productScale}</td>
-          <td>{product.productVendor}</td>
-          <td>{product.quantityInStock}</td>
-          <td>{product.buyPrice}</td>
-          <td>{product.MSRP}</td>
+          <td>{{ loop.index }}</td>
+          <td>{{ product.product_code }}</td>
+          <td>{{ product.product_name }}</td>
+          <td>{{ product.product_line }}</td>
+          <td>{{ product.product_scale }}</td>
+          <td>{{ product.product_vendor }}</td>
+          <td>{{ product.quantity_in_stock }}</td>
+          <td>{{ product.buy_price }}</td>
+          <td>{{ product.msrp }}</td>
           <td>
-            <a class="btn btn-default" href="/product/detail/{product.id}">detail</a>
+            <a class="btn btn-default" href="/product/detail/{{ product.id }}">detail</a>
           </td>
         </tr>
         {% endfor %}

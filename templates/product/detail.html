@@ -11,45 +11,45 @@
       <tbody>
         <tr>
           <th class="field-label col-xs-3 active">id</th>
-          <td class="col-md-9">{product.id}</td>
+          <td class="col-md-9">{{ product.id }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">productCode</th>
-          <td class="col-md-9">{product.productCode}</td>
+          <td class="col-md-9">{{ product.product_code }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">productName</th>
 {#          <td class="col-md-9" th:text="*{#vhs.substring(productName,10)}">productName</td>#}
-          <td class="col-md-9">{product.productName}</td>
+          <td class="col-md-9">{{ product.product_name }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">productLine</th>
-          <td class="col-md-9">{product.productLine}</td>
+          <td class="col-md-9">{{ product.product_line }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">productScale</th>
-          <td class="col-md-9">{product.productScale}</td>
+          <td class="col-md-9">{{ product.product_scale }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">productVendor</th>
-          <td class="col-md-9">{product.productVendor}</td>
+          <td class="col-md-9">{{ product.product_vendor }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">productDescription</th>
 {#          <td class="col-md-9" th:text="*{#vhs.substring(productDescription,10)}">productDescription</td>#}
-          <td class="col-md-9">{product.productDescription}</td>
+          <td class="col-md-9">{{ product.product_description }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">quantityInStock</th>
-          <td class="col-md-9">{product.quantityInStock}</td>
+          <td class="col-md-9">{{ product.quantity_in_stock }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">buyPrice</th>
-          <td class="col-md-9">{product.buyPrice}</td>
+          <td class="col-md-9">{{ product.buy_price }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">MSRP</th>
-          <td class="col-md-9">{product.MSRP}</td>
+          <td class="col-md-9">{{ product.msrp }}</td>
         </tr>
       </tbody>
     </table>
