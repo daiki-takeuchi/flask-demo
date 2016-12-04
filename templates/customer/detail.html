@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block title %}customer{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>detail - contents</h3>
+
+    {% if customer %}
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="field-label col-xs-3 active">id</th>
+          <td class="col-md-9">{customer.id}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">customer Number</th>
+          <td class="col-md-9">{customer.customerNumber}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">customer Name</th>
+          <td class="col-md-9">{customer.customerName}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">contact Last Name</th>
+          <td class="col-md-9">{customer.contactLastName}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">contact First Name</th>
+          <td class="col-md-9">{customer.contactFirstName}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">phone</th>
+          <td class="col-md-9">{customer.phone}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">address Line1</th>
+          <td class="col-md-9">{customer.addressLine1}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">address Line2</th>
+          <td class="col-md-9">{customer.addressLine2}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">city</th>
+          <td class="col-md-9">{customer.city}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">state</th>
+          <td class="col-md-9">{customer.state}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">postal Code</th>
+          <td class="col-md-9">{customer.postalCode}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">country</th>
+          <td class="col-md-9">{customer.country}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">sales Rep Employee Number</th>
+          <td class="col-md-9">{customer.salesRepEmployeeNumber}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">credit Limit</th>
+          <td class="col-md-9">{customer.creditLimit}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}

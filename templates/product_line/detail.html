@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}product{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>detail - contents</h3>
+
+    {% if product_line %}
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="field-label col-xs-3 active">id</th>
+          <td class="col-md-9">{product_line.id}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productLine</th>
+          <td class="col-md-9">{product_line.productLine}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">textDescription</th>
+          <td class="col-md-9">{product_line.textDescription}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">htmlDescription</th>
+          <td class="col-md-9">{product_line.htmlDescription}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">image</th>
+          <td class="col-md-9">{product_line.image}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}

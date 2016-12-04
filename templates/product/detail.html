@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}product{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>detail - contents</h3>
+
+    {% if product %}
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="field-label col-xs-3 active">id</th>
+          <td class="col-md-9">{product.id}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productCode</th>
+          <td class="col-md-9">{product.productCode}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productName</th>
+{#          <td class="col-md-9" th:text="*{#vhs.substring(productName,10)}">productName</td>#}
+          <td class="col-md-9">{product.productName}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productLine</th>
+          <td class="col-md-9">{product.productLine}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productScale</th>
+          <td class="col-md-9">{product.productScale}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productVendor</th>
+          <td class="col-md-9">{product.productVendor}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">productDescription</th>
+{#          <td class="col-md-9" th:text="*{#vhs.substring(productDescription,10)}">productDescription</td>#}
+          <td class="col-md-9">{product.productDescription}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">quantityInStock</th>
+          <td class="col-md-9">{product.quantityInStock}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">buyPrice</th>
+          <td class="col-md-9">{product.buyPrice}</td>
+        </tr>
+        <tr>
+          <th class="field-label col-xs-3 active">MSRP</th>
+          <td class="col-md-9">{product.MSRP}</td>
+        </tr>
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}

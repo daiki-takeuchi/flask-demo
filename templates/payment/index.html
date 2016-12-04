@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}payment{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>index - contents</h3>
+
+    {% if result %}
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>customer Number</th>
+          <th>check Number</th>
+          <th>payment Date</th>
+          <th>amount</th>
+          <th>detail</th>
+        </tr>
+      </thead>
+      {% for payment in result %}
+      <tbody>
+        <tr>
+          <td>{loop.counter}</td>
+          <td>{payment.id}</td>
+          <td>{payment.customerNumber}</td>
+          <td>{payment.checkNumber}</td>
+          <td>{payment.paymentDate}</td>
+          <td>{payment.amount}</td>
+          <td>
+            <a class="btn btn-default" href="/payment/detail/{payment.id}">detail</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}

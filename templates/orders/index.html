@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}orders{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>index - contents</h3>
+
+    {% if result %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>order Number</th>
+          <th>order Date</th>
+          <th>required Date</th>
+          <th>shipped Date</th>
+          <th>status</th>
+          <th>customer Number</th>
+          <th>detail</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for order in result %}
+        <tr>
+          <td>{loop.counter}</td>
+          <td>{order.id}</td>
+          <td>{order.orderNumber}</td>
+          <td>{order.orderDate}</td>
+          <td>{order.requiredDate}</td>
+          <td>{order.shippedDate}</td>
+          <td>{order.status}</td>
+          <td>{order.customerNumber}</td>
+          <td>
+            <a class="btn btn-default" href="/orders/detail/{order.id}">detail</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}

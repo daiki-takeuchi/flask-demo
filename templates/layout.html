@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+{#  <meta name="keywords" content="{title}" />#}
+{#  <meta name="description" content="{title}" />#}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link type=text/css href="{{ url_for('static', filename='vendor/bootstrap-3.3.5/css/bootstrap.min.css') }}" rel=stylesheet>
+</head>
+<body>
+
+  <!-- container start -->
+  <div class="container">
+
+    <div class="page-header">
+      <h1>header</h1>
+    </div>
+
+    <!-- navi start -->
+    <div class="row navi">
+      <div class="col-md-12">
+        <ul class="nav nav-pills">
+          <li role="presentation"><a href="/customer">customer</a></li>
+          <li role="presentation"><a href="/orders">orders</a></li>
+          <li role="presentation"><a href="/payment">payment</a></li>
+          <li role="presentation"><a href="/product">product</a></li>
+          <li role="presentation"><a href="/productline">product line</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- navi end -->
+
+    <!-- contents -->
+    <div>{% block body %}{% endblock %}</div>
+
+    <div class="page-footer">
+      <h3>footer</h3>
+    </div>
+
+  </div>
+  <!-- container end -->
+
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery-1.11.3.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap-3.3.5/js/bootstrap.js') }}"></script>
+
+</body>
+</html>
+

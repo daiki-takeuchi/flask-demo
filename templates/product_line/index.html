@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}product_line{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>index - contents</h3>
+
+    {% if result %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>product Line</th>
+          <th>text Description</th>
+          <th>html Description</th>
+          <th>image</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for product_line in result %}
+        <tr>
+          <td>{loop.counter}</td>
+          <td>{product_line.productLine}</td>
+          <td>{product_line.textDescription}</td>
+          <td>{product_line.htmlDescription}</td>
+          <td>image</td>
+          <td>
+            <a class="btn btn-default" href="/productline/detail/{product_line.id}">detail</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}

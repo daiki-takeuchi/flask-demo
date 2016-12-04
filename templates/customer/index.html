@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}customer{% endblock %}
+{% block body %}
+<!-- partial1 start -->
+<div class="row">
+  <div class="col-md-12 well">
+    <h3>index - contents</h3>
+    {% if result %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>customer Number</th>
+          <th>customer Name</th>
+          <th>contact Last Name</th>
+          <th>contact First Name</th>
+          <th>city</th>
+          <th>state</th>
+          <th>postal Code</th>
+          <th>country</th>
+          <th>sales Rep Employee Number</th>
+          <th>credit Limit</th>
+          <th>detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in result %}
+        <tr>
+          <td>{loop.counter}</td>
+          <td>{customer.id}</td>
+          <td>{customer.customerNumber}</td>
+          <td>{customer.customerName}</td>
+          <td>{customer.contactLastName}</td>
+          <td>{customer.contactFirstName}</td>
+          <td>{customer.city}</td>
+          <td>{customer.state}</td>
+          <td>{customer.postalCode}</td>
+          <td>{customer.country}</td>
+          <td>{customer.salesRepEmployeeNumber}</td>
+          <td>{customer.creditLimit}</td>
+          <td>
+            <a class="btn btn-default" href="/customer/detail/{customer.id}">detail</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
+<!-- partial1 end -->
+{% endblock %}
