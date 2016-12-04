@@ -1,6 +1,5 @@
 runtime: python
 vm: true
-env: flex
 entrypoint: gunicorn -b :$PORT flask-demo:app
 
 runtime_config:
