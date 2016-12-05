@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, Date, Numeric
 
-from application.config.database import Base
+from application.config.database import Model
 
 
-class Payment(Base):
+class Payment(Model):
     __tablename__ = 'payment'
     id = Column(Integer, primary_key=True, autoincrement=True)
     customer_number = Column(Integer, nullable=False)

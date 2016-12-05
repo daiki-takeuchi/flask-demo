@@ -1,18 +1,19 @@
 from flask import Blueprint
 from flask import render_template
 
-from application.domain.orders import Orders
+from application.domain.orders_repository import OrdersRepository
 
 app = Blueprint('orders', __name__)
+repository = OrdersRepository()
 
 
 @app.route('/')
 def index():
-    result = Orders.query.all()
+    result = repository.find_all()
     return render_template('orders/index.html', result=result)
 
 
 @app.route('/detail/<orders_id>')
 def detail(orders_id):
-    order = Orders.query.filter('orders.id = ' + orders_id).one()
+    order = repository.find_by_id(orders_id)
     return render_template('orders/detail.html', order=order)

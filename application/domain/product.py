@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, Numeric
 
-from application.config.database import Base
+from application.config.database import Model
 
 
-class Product(Base):
+class Product(Model):
     __tablename__ = 'product'
     id = Column(Integer, primary_key=True, autoincrement=True)
     product_code = Column(String(32), nullable=False)

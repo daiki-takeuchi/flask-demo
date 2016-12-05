@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, Numeric
 
-from application.config.database import Base
+from application.config.database import Model
 
 
-class OrderDetail(Base):
+class OrderDetail(Model):
     __tablename__ = 'order_detail'
     id = Column(Integer, primary_key=True, autoincrement=True)
     order_number = Column(Integer, nullable=False)
