@@ -20,13 +20,13 @@
       <tbody>
       {% for product_line in result %}
         <tr>
-          <td>{loop.counter}</td>
-          <td>{product_line.productLine}</td>
-          <td>{product_line.textDescription}</td>
-          <td>{product_line.htmlDescription}</td>
+          <td>{{ loop.index }}</td>
+          <td>{{ product_line.product_line }}</td>
+          <td>{{ product_line.text_description }}</td>
+          <td>{{ product_line.html_description }}</td>
           <td>image</td>
           <td>
-            <a class="btn btn-default" href="/productline/detail/{product_line.id}">detail</a>
+            <a class="btn btn-default" href="/productline/detail/{{ product_line.id }}">detail</a>
           </td>
         </tr>
         {% endfor %}
