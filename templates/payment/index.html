@@ -19,8 +19,8 @@
           <th>detail</th>
         </tr>
       </thead>
-      {% for payment in result %}
       <tbody>
+        {% for payment in result %}
         <tr>
           <td>{{ loop.index }}</td>
           <td>{{ payment.id }}</td>
