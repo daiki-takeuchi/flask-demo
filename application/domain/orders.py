@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date
 
-from application.config.database import Model
+from application.database import Model
 
 
 class Orders(Model):

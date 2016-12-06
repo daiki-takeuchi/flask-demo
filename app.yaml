@@ -11,3 +11,6 @@ automatic_scaling:
   cool_down_period_sec: 60
   cpu_utilization:
     target_utilization: 0.5
+
+env_variables:
+  FLASK_CONFIGURATION: 'development'

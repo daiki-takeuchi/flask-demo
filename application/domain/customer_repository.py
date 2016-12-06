@@ -1,6 +1,4 @@
-from sqlalchemy.ext.declarative import declarative_base
-
-from application.config.database import db_session
+from application.database import db_session
 from application.domain.customer import Customer
 
 

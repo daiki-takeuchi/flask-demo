@@ -1,4 +1,4 @@
-from application.config.database import db_session
+from application.database import db_session
 from application.domain.product import Product
 
 
