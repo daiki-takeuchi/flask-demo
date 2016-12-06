@@ -13,7 +13,7 @@ from application.blueprint import register
 pymysql.install_as_MySQLdb()
 
 
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 config_name = os.getenv('FLASK_CONFIGURATION', 'local')
 app.config.from_object('config.' + config_name)
