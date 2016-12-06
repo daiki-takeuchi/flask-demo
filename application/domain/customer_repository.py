@@ -1,4 +1,4 @@
-from application.database import db_session
+from application import db_session
 from application.domain.customer import Customer
 
 

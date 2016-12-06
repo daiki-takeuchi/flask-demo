@@ -1,6 +1,6 @@
 DEBUG = False
 TESTING = False
-HOST = '104.198.126.171'
+HOST = 'mydb.c2d6yuy7egrg.us-west-2.rds.amazonaws.com'
 PORT = '3306'
 USER = 'test_user'
 PASSWORD = 'test_user'

@@ -1,6 +1,6 @@
 runtime: python
 vm: true
-entrypoint: gunicorn -b :$PORT flask-demo:app
+entrypoint: gunicorn -b :$PORT runserver:app
 
 runtime_config:
   python_version: 3
@@ -13,4 +13,4 @@ automatic_scaling:
     target_utilization: 0.5
 
 env_variables:
-  FLASK_CONFIGURATION: 'development'
+  FLASK_CONFIGURATION: 'production'

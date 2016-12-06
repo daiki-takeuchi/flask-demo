@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Numeric
 
-from application.database import Model
+from application import Model
 
 
 class Customer(Model):
