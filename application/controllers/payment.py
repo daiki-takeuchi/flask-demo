@@ -9,7 +9,7 @@ service = PaymentService()
 
 @bp.route('/')
 def index():
-    result = service.find_all()
+    result = service.find_all(1, 10)
     return render_template('payment/index.html', result=result)
 
 
