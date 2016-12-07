@@ -1,15 +1,15 @@
-from application import db_session
+from application import db
 from application.domain.order_detail import OrderDetail
 
 
 class OrderDetailRepository(object):
 
     def find_all(self):
-        return db_session.query(OrderDetail).all()
+        return OrderDetail.query.all()
 
     def find_by_id(self, order_detail_id):
-        return db_session.query(OrderDetail).filter('order_detail.id = ' + order_detail_id).one()
+        return OrderDetail.query.filter(OrderDetail.id == order_detail_id).one()
 
     def save(self, order_detail):
-        db_session.add(order_detail)
-        db_session.commit()
+        db.session.add(order_detail)
+        db.session.commit()

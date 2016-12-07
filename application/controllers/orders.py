@@ -1,19 +1,19 @@
 from flask import Blueprint
 from flask import render_template
 
-from application.domain.orders_repository import OrdersRepository
+from application.service.orders_service import OrdersService
 
 bp = Blueprint('orders', __name__, url_prefix='/orders')
-repository = OrdersRepository()
+service = OrdersService()
 
 
 @bp.route('/')
 def index():
-    result = repository.find_all()
+    result = service.find_all()
     return render_template('orders/index.html', result=result)
 
 
 @bp.route('/detail/<orders_id>')
 def detail(orders_id):
-    order = repository.find_by_id(orders_id)
+    order = service.find_by_id(orders_id)
     return render_template('orders/detail.html', order=order)

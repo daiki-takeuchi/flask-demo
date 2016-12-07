@@ -1,19 +1,19 @@
 from flask import Blueprint
 from flask import render_template
 
-from application.domain.payment_repository import PaymentRepository
+from application.service.payment_service import PaymentService
 
 bp = Blueprint('payment', __name__, url_prefix='/payment')
-repository = PaymentRepository()
+service = PaymentService()
 
 
 @bp.route('/')
 def index():
-    result = repository.find_all()
+    result = service.find_all()
     return render_template('payment/index.html', result=result)
 
 
 @bp.route('/detail/<payment_id>')
 def detail(payment_id):
-    payment = repository.find_by_id(payment_id)
+    payment = service.find_by_id(payment_id)
     return render_template('payment/detail.html', payment=payment)
