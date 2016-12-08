@@ -1,7 +1,7 @@
 from application.domain.orders_repository import OrdersRepository
 
 
-class OrdersService:
+class OrdersService(object):
     repository = OrdersRepository()
 
     def find_all(self, page):

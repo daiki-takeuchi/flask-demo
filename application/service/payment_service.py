@@ -1,7 +1,7 @@
 from application.domain.payment_repository import PaymentRepository
 
 
-class PaymentService:
+class PaymentService(object):
     repository = PaymentRepository()
 
     def find_all(self, page):

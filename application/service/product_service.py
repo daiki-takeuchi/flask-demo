@@ -1,7 +1,7 @@
 from application.domain.product_repository import ProductRepository
 
 
-class ProductService:
+class ProductService(object):
     repository = ProductRepository()
 
     def find_all(self, page):

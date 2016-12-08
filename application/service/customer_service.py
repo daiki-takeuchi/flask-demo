@@ -1,7 +1,7 @@
 from application.domain.customer_repository import CustomerRepository
 
 
-class CustomerService:
+class CustomerService(object):
     repository = CustomerRepository()
 
     def find_all(self, page):
