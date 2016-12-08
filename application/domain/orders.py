@@ -5,6 +5,8 @@ from application import db
 
 class Orders(db.Model):
     __tablename__ = 'orders'
+    PER_PAGE = 10
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     order_number = Column(Integer, nullable=False)
     order_date = Column(Date, nullable=False)

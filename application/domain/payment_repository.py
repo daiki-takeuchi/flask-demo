@@ -4,8 +4,8 @@ from application.domain.payment import Payment
 
 class PaymentRepository(object):
 
-    def find_all(self, page, per_page):
-        pagination = Payment.query.paginate(page, per_page)
+    def find_all(self, page):
+        pagination = Payment.query.paginate(page, Payment.PER_PAGE)
         return pagination.items
 
     def find_by_id(self, payment_id):

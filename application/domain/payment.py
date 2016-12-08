@@ -5,6 +5,8 @@ from application import db
 
 class Payment(db.Model):
     __tablename__ = 'payment'
+    PER_PAGE = 10
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     customer_number = Column(Integer, nullable=False)
     check_number = Column(String(64), nullable=False)

@@ -5,6 +5,8 @@ from application import db
 
 class ProductLine(db.Model):
     __tablename__ = 'product_line'
+    PER_PAGE = 10
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     product_line = Column(String(32), nullable=False)
     text_description = Column(String(1024), nullable=False)

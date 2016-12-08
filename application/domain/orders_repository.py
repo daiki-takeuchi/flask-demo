@@ -4,8 +4,8 @@ from application.domain.orders import Orders
 
 class OrdersRepository(object):
 
-    def find_all(self, page, per_page):
-        pagination = Orders.query.paginate(page, per_page)
+    def find_all(self, page):
+        pagination = Orders.query.paginate(page, Orders.PER_PAGE)
         return pagination.items
 
     def find_by_id(self, orders_id):

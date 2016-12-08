@@ -4,8 +4,8 @@ from application.domain.product import Product
 
 class ProductRepository(object):
 
-    def find_all(self, page, per_page):
-        pagination = Product.query.paginate(page, per_page)
+    def find_all(self, page):
+        pagination = Product.query.paginate(page, Product.PER_PAGE)
         return pagination.items
 
     def find_by_id(self, product_id):

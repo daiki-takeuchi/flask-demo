@@ -5,6 +5,8 @@ from application import db
 
 class Customer(db.Model):
     __tablename__ = 'customer'
+    PER_PAGE = 10
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     customer_number = Column(Integer, nullable=False)
     customer_name = Column(String(124), nullable=False)

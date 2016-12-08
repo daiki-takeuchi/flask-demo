@@ -9,7 +9,7 @@ service = CustomerService()
 
 @bp.route('/', methods=['GET'])
 def index():
-    result = service.find_all(page=1, per_page=10)
+    result = service.find_all(page=1)
     return render_template('customer/index.html', result=result)
 
 

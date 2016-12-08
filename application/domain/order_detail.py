@@ -5,6 +5,8 @@ from application import db
 
 class OrderDetail(db.Model):
     __tablename__ = 'order_detail'
+    PER_PAGE = 10
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     order_number = Column(Integer, nullable=False)
     product_code = Column(String(32), nullable=False)
