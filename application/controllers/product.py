@@ -8,7 +8,7 @@ service = ProductService()
 
 @bp.route('/')
 def index():
-    result = service.find_all(1, 10)
+    result = service.find_all(page=1, per_page=10)
     return render_template('product/index.html', result=result)
 
 
