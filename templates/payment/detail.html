@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">payment Date</th>
-          <td class="col-md-9">{{ payment.payment_date }}</td>
+          <td class="col-md-9">{{ payment.payment_date|datetime_format("%Y/%m/%d") }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">amount</th>

@@ -6,7 +6,7 @@ class ProductLineRepository(object):
 
     def find_all(self, page):
         pagination = ProductLine.query.paginate(page, ProductLine.PER_PAGE)
-        return pagination.items
+        return pagination
 
     def find_by_id(self, product_line_id):
         return ProductLine.query.filter(ProductLine.id == product_line_id).one()

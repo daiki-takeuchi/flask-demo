@@ -27,9 +27,9 @@
           <td>{{ loop.index }}</td>
           <td>{{ order.id }}</td>
           <td>{{ order.order_number }}</td>
-          <td>{{ order.order_date }}</td>
-          <td>{{ order.required_date }}</td>
-          <td>{{ order.shipped_date }}</td>
+          <td>{{ order.order_date|datetime_format("%Y/%m/%d") }}</td>
+          <td>{{ order.required_date|datetime_format("%Y/%m/%d") }}</td>
+          <td>{{ order.shipped_date|datetime_format("%Y/%m/%d") }}</td>
           <td>{{ order.status }}</td>
           <td>{{ order.customer_number }}</td>
           <td>

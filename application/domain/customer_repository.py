@@ -6,7 +6,7 @@ class CustomerRepository(object):
 
     def find_all(self, page):
         pagination = Customer.query.paginate(page, Customer.PER_PAGE)
-        return pagination.items
+        return pagination
 
     def find_by_id(self, customer_id):
         return Customer.query.filter(Customer.id == customer_id).one()

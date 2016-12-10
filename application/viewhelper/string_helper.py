@@ -1,5 +1,5 @@
-def filter_supress_none(val):
-    if not val is None:
+def filter_suppress_none(val):
+    if val is not None:
         return val
     else:
         return ''

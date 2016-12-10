@@ -47,7 +47,7 @@
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">state</th>
-          <td class="col-md-9">{{ customer.state }}</td>
+          <td class="col-md-9">{{ customer.state|filter_suppress_none }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">postal Code</th>
@@ -59,7 +59,7 @@
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">sales Rep Employee Number</th>
-          <td class="col-md-9">{{ customer.sales_rep_employee_number }}</td>
+          <td class="col-md-9">{{ customer.sales_rep_employee_number|filter_suppress_none }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">credit Limit</th>

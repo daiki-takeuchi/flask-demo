@@ -19,15 +19,15 @@
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">order Date</th>
-          <td class="col-md-9">{{ order.order_date }}</td>
+          <td class="col-md-9">{{ order.order_date|datetime_format("%Y/%m/%d") }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">required Date</th>
-          <td class="col-md-9">{{ order.required_date }}</td>
+          <td class="col-md-9">{{ order.required_date|datetime_format("%Y/%m/%d") }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">shipped Date</th>
-          <td class="col-md-9">{{ order.shipped_date }}</td>
+          <td class="col-md-9">{{ order.shipped_date|datetime_format("%Y/%m/%d") }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">status</th>
@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">comments</th>
-          <td class="col-md-9">{{ order.comments }}</td>
+          <td class="col-md-9">{{ order.comments|filter_suppress_none }}</td>
         </tr>
         <tr>
           <th class="field-label col-xs-3 active">customer Number</th>

@@ -26,7 +26,7 @@
           <td>{{ payment.id }}</td>
           <td>{{ payment.customer_number }}</td>
           <td>{{ payment.check_number }}</td>
-          <td>{{ payment.payment_date }}</td>
+          <td>{{ payment.payment_date|datetime_format("%Y/%m/%d") }}</td>
           <td>{{ payment.amount }}</td>
           <td>
             <a class="btn btn-default" href="/payment/detail/{{ payment.id }}">detail</a>
