@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import pymysql
 
 from application.blueprint import register
+from application.viewhelper import my_filter
 
 pymysql.install_as_MySQLdb()
 
@@ -17,6 +18,7 @@ app.config.from_object('config.' + config_name)
 db = SQLAlchemy(app)
 
 register(app)
+my_filter(app)
 
 
 @app.route('/')

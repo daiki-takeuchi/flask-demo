@@ -23,8 +23,8 @@
           <td>{{ loop.index }}</td>
           <td>{{ product_line.product_line }}</td>
           <td>{{ product_line.text_description }}</td>
-          <td>{{ product_line.html_description }}</td>
-          <td>{{ product_line.image }}</td>
+          <td>{{ product_line.html_description|filter_supress_none }}</td>
+          <td>{{ product_line.image|filter_supress_none }}</td>
           <td>
             <a class="btn btn-default" href="/productline/detail/{{ product_line.id }}">detail</a>
           </td>
