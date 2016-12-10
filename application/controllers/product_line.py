@@ -11,8 +11,13 @@ service = ProductLineService()
 @bp.route('/index', methods=['GET', 'POST'])
 @bp.route('/index/<int:page>', methods=['GET', 'POST'])
 def index(page=1):
-    result = service.find_all(page).items
-    return render_template('product_line/index.html', result=result)
+    pagination = service.find_all(page)
+    return render_template('product_line/index.html', pagination=pagination)
+
+
+@bp.route('/page/<int:page>', methods=['GET', 'POST'])
+def product_line_page(page=1):
+    return index(page)
 
 
 @bp.route('/detail/<product_line_id>')

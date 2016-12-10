@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import "pagination.html" as p %}
 {% block title %}product{% endblock %}
 {% block body %}
 <!-- partial1 start -->
@@ -6,7 +7,10 @@
   <div class="col-md-12 well">
     <h3>index - contents</h3>
 
-    {% if result %}
+    {% if pagination %}
+    {% if pagination.total > pagination.per_page %}
+        {{ p.pagination_widget(pagination,'.product_page') }}
+    {% endif %}
     <table class="table table-striped">
       <thead>
         <tr>
@@ -23,9 +27,9 @@
         </tr>
       </thead>
       <tbody>
-      {% for product in result %}
+      {% for product in pagination.items %}
         <tr>
-          <td>{{ loop.index }}</td>
+          <td>{{ (pagination.prev_num * pagination.per_page) + loop.index }}</td>
           <td>{{ product.product_code }}</td>
           <td>{{ product.product_name }}</td>
           <td>{{ product.product_line }}</td>

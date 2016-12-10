@@ -11,8 +11,13 @@ service = OrdersService()
 @bp.route('/index', methods=['GET', 'POST'])
 @bp.route('/index/<int:page>', methods=['GET', 'POST'])
 def index(page=1):
-    result = service.find_all(page).items
-    return render_template('orders/index.html', result=result)
+    pagination = service.find_all(page)
+    return render_template('orders/index.html', pagination=pagination)
+
+
+@bp.route('/page/<int:page>', methods=['GET', 'POST'])
+def orders_page(page=1):
+    return index(page)
 
 
 @bp.route('/detail/<orders_id>')

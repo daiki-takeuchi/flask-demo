@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import "pagination.html" as p %}
 {% block title %}payment{% endblock %}
 {% block body %}
 <!-- partial1 start -->
@@ -6,7 +7,10 @@
   <div class="col-md-12 well">
     <h3>index - contents</h3>
 
-    {% if result %}
+    {% if pagination %}
+    {% if pagination.total > pagination.per_page %}
+        {{ p.pagination_widget(pagination,'.payment_page') }}
+    {% endif %}
     <table class="table table-striped table-condensed">
       <thead>
         <tr>
@@ -20,9 +24,9 @@
         </tr>
       </thead>
       <tbody>
-        {% for payment in result %}
+        {% for payment in pagination.items %}
         <tr>
-          <td>{{ loop.index }}</td>
+          <td>{{ (pagination.prev_num * pagination.per_page) + loop.index }}</td>
           <td>{{ payment.id }}</td>
           <td>{{ payment.customer_number }}</td>
           <td>{{ payment.check_number }}</td>

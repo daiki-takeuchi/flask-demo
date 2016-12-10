@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import "pagination.html" as p %}
 {% block title %}orders{% endblock %}
 {% block body %}
 <!-- partial1 start -->
@@ -6,7 +7,10 @@
   <div class="col-md-12 well">
     <h3>index - contents</h3>
 
-    {% if result %}
+    {% if pagination %}
+    {% if pagination.total > pagination.per_page %}
+        {{ p.pagination_widget(pagination,'.orders_page') }}
+    {% endif %}
     <table class="table table-striped">
       <thead>
         <tr>
@@ -22,9 +26,9 @@
         </tr>
       </thead>
       <tbody>
-      {% for order in result %}
+      {% for order in pagination.items %}
         <tr>
-          <td>{{ loop.index }}</td>
+          <td>{{ (pagination.prev_num * pagination.per_page) + loop.index }}</td>
           <td>{{ order.id }}</td>
           <td>{{ order.order_number }}</td>
           <td>{{ order.order_date|datetime_format("%Y/%m/%d") }}</td>

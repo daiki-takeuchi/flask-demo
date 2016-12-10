@@ -1,11 +1,16 @@
 {% extends "layout.html" %}
+{% import "pagination.html" as p %}
 {% block title %}customer{% endblock %}
 {% block body %}
 <!-- partial1 start -->
 <div class="row">
   <div class="col-md-12 well">
     <h3>index - contents</h3>
-    {% if result %}
+
+    {% if pagination %}
+    {% if pagination.total > pagination.per_page %}
+        {{ p.pagination_widget(pagination,'.customer_page') }}
+    {% endif %}
     <table class="table table-striped">
       <thead>
         <tr>
@@ -25,9 +30,9 @@
         </tr>
       </thead>
       <tbody>
-        {% for customer in result %}
+        {% for customer in pagination.items %}
         <tr>
-          <td>{{ loop.index }}</td>
+          <td>{{ (pagination.prev_num * pagination.per_page) + loop.index }}</td>
           <td>{{ customer.id }}</td>
           <td>{{ customer.customer_number }}</td>
           <td>{{ customer.customer_name }}</td>

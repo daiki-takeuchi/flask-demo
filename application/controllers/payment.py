@@ -11,8 +11,13 @@ service = PaymentService()
 @bp.route('/index', methods=['GET', 'POST'])
 @bp.route('/index/<int:page>', methods=['GET', 'POST'])
 def index(page=1):
-    result = service.find_all(page).items
-    return render_template('payment/index.html', result=result)
+    pagination = service.find_all(page)
+    return render_template('payment/index.html', pagination=pagination)
+
+
+@bp.route('/page/<int:page>', methods=['GET', 'POST'])
+def payment_page(page=1):
+    return index(page)
 
 
 @bp.route('/detail/<payment_id>')
