@@ -2,106 +2,77 @@
 {% block title %}customer{% endblock %}
 {% block body %}
 
-<form action="{{ url_for('.detail', customer_id = customer.id) }}" method="post">
-    {{ form.hidden_tag() }}
-    {{ form.customer_number.label }}
-    {{ form.customer_number }}
-    {{ form.customer_name.label }}
-    {{ form.customer_name }}
-    {{ form.contact_last_name.label }}
-    {{ form.contact_last_name }}
-    {{ form.contact_first_name.label }}
-    {{ form.contact_first_name }}
-    {{ form.phone.label }}
-    {{ form.phone }}
-    {{ form.address_line1.label }}
-    {{ form.address_line1 }}
-    {{ form.address_line2.label }}
-    {{ form.address_line2 }}
-    {{ form.city.label }}
-    {{ form.city }}
-    {{ form.state.label }}
-    {{ form.state }}
-    {{ form.postal_code.label }}
-    {{ form.postal_code }}
-    {{ form.country.label }}
-    {{ form.country }}
-    {{ form.sales_rep_employee_number.label }}
-    {{ form.sales_rep_employee_number }}
-    {{ form.credit_limit.label }}
-    {{ form.credit_limit }}
-    {{ form.submit }}
-</form>
+    <!-- partial1 start -->
+    <div class="row">
+        <div class="col-md-12 well">
+            <h3>detail - contents</h3>
+            <form action="{{ url_for('.detail', customer_id = form.id.data) }}" method="post">
+                {{ form.hidden_tag() }}
 
-<!-- partial1 start -->
-<div class="row">
-  <div class="col-md-12 well">
-    <h3>detail - contents</h3>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.id.label }}</th>
+                        <td class="col-md-9">{{ form.id.data }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.customer_number.label }}</th>
+                        <td class="col-md-9">{{ form.customer_number }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.customer_name.label }}</th>
+                        <td class="col-md-9">{{ form.customer_name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.contact_last_name.label }}</th>
+                        <td class="col-md-9">{{ form.contact_last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.contact_first_name.label }}</th>
+                        <td class="col-md-9">{{ form.contact_first_name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.phone.label }}</th>
+                        <td class="col-md-9">{{ form.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.address_line1.label }}</th>
+                        <td class="col-md-9">{{ form.address_line1 }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.address_line2.label }}</th>
+                        <td class="col-md-9">{{ form.address_line2 }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.city.label }}</th>
+                        <td class="col-md-9">{{ form.city }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.state.label }}</th>
+                        <td class="col-md-9">{{ form.state }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.postal_code.label }}</th>
+                        <td class="col-md-9">{{ form.postal_code }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.country.label }}</th>
+                        <td class="col-md-9">{{ form.country }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.sales_rep_employee_number.label }}</th>
+                        <td class="col-md-9">{{ form.sales_rep_employee_number }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ form.credit_limit.label }}</th>
+                        <td class="col-md-9">{{ form.credit_limit }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                {{ form.submit }}
+            </form>
 
-    {% if customer %}
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="field-label col-xs-3 active">id</th>
-          <td class="col-md-9">{{ customer.id }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">customer Number</th>
-          <td class="col-md-9">{{ customer.customer_number }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">customer Name</th>
-          <td class="col-md-9">{{ customer.customer_name }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">contact Last Name</th>
-          <td class="col-md-9">{{ customer.contact_last_name }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">contact First Name</th>
-          <td class="col-md-9">{{ customer.contact_first_name }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">phone</th>
-          <td class="col-md-9">{{ customer.phone|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">address Line1</th>
-          <td class="col-md-9">{{ customer.address_line1|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">address Line2</th>
-          <td class="col-md-9">{{ customer.address_line2|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">city</th>
-          <td class="col-md-9">{{ customer.city|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">state</th>
-          <td class="col-md-9">{{ customer.state|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">postal Code</th>
-          <td class="col-md-9">{{ customer.postal_code|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">country</th>
-          <td class="col-md-9">{{ customer.country|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">sales Rep Employee Number</th>
-          <td class="col-md-9">{{ customer.sales_rep_employee_number|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">credit Limit</th>
-          <td class="col-md-9">{{ customer.credit_limit|filter_suppress_none }}</td>
-        </tr>
-      </tbody>
-    </table>
-    {% endif %}
-
-  </div>
-</div>
-<!-- partial1 end -->
+        </div>
+    </div>
+    <!-- partial1 end -->
 {% endblock %}

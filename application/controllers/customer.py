@@ -28,22 +28,23 @@ def customer_page(page=1):
 @bp.route('/detail/<customer_id>', methods=['GET', 'POST'])
 def detail(customer_id):
     customer = service.find_by_id(customer_id)
-    form = CustomerForm(request.form)
+    form = CustomerForm(request.form, customer)
     if request.method == 'POST' and form.validate():
-        customer = Customer(request.form['customer_number'],
-                            request.form['customer_name'],
-                            request.form['contact_last_name'],
-                            request.form['contact_first_name'],
-                            request.form['phone'],
-                            request.form['address_line1'],
-                            request.form['address_line2'],
-                            request.form['city'],
-                            request.form['state'],
-                            request.form['postal_code'],
-                            request.form['country'],
-                            request.form['sales_rep_employee_number'],
-                            request.form['credit_limit'])
+        customer.customer_number = request.form['customer_number']
+        customer.customer_name = request.form['customer_name']
+        customer.contact_last_name = request.form['contact_last_name']
+        customer.contact_first_name = request.form['contact_first_name']
+        customer.phone = request.form['phone'] or None
+        customer.address_line1 = request.form['address_line1'] or None
+        customer.address_line2 = request.form['address_line2'] or None
+        customer.city = request.form['city'] or None
+        customer.state = request.form['state'] or None
+        customer.postal_code = request.form['postal_code'] or None
+        customer.country = request.form['country'] or None
+        customer.sales_rep_employee_number = request.form['sales_rep_employee_number'] or None
+        customer.credit_limit = request.form['credit_limit'] or None
+
         service.save(customer)
         current_app.logger.debug(form.errors)
         return redirect(url_for('.detail', customer_id=customer.id))
-    return render_template('customer/detail.html', customer=customer, form=form)
+    return render_template('customer/detail.html', form=form)

@@ -3,6 +3,7 @@ from wtforms import validators, StringField, SubmitField, IntegerField, DecimalF
 
 
 class CustomerForm(FlaskForm):
+    id = IntegerField('Id')
     customer_number = IntegerField('Customer Number', [validators.required()])
     customer_name = StringField('Customer Name', [validators.required(), validators.Length(max=124)])
     contact_last_name = StringField('Contact Last Name', [validators.required(), validators.Length(max=124)])
