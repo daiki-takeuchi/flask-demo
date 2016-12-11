@@ -15,6 +15,6 @@ class CustomerForm(FlaskForm):
     state = StringField('State', [validators.Length(max=32)])
     postal_code = StringField('Postal Code', [validators.Length(max=32)])
     country = StringField('Country', [validators.Length(max=32)])
-    sales_rep_employee_number = IntegerField('Sales Rep Employee Number')
-    credit_limit = DecimalField('Credit Limit')
+    sales_rep_employee_number = IntegerField('Sales Rep Employee Number', [validators.optional()])
+    credit_limit = DecimalField('Credit Limit', [validators.optional()])
     submit = SubmitField("Send")
