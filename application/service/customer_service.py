@@ -12,3 +12,6 @@ class CustomerService(object):
 
     def save(self, customer):
         return self.repository.save(customer)
+
+    def destroy(self, customer):
+        return self.repository.destroy(customer)

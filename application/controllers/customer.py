@@ -48,3 +48,9 @@ def detail(customer_id):
         current_app.logger.debug(form.errors)
         return redirect(url_for('.detail', customer_id=customer.id))
     return render_template('customer/detail.html', form=form)
+
+
+@bp.route('/delete/<customer_id>', methods=['GET'])
+def delete(customer_id):
+    customer = service.find_by_id(customer_id)
+    service.destroy(customer)

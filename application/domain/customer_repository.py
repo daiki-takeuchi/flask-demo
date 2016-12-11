@@ -17,3 +17,8 @@ class CustomerRepository(object):
         db.session.add(customer)
         db.session.commit()
         current_app.logger.debug(repr(customer))
+
+    def destroy(self, customer):
+        db.session.delete(customer)
+        db.session.commit()
+        current_app.logger.debug(repr(customer))
