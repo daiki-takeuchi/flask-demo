@@ -1,3 +1,5 @@
+from flask import current_app
+
 from application import db
 from application.domain.customer import Customer
 
@@ -14,3 +16,4 @@ class CustomerRepository(object):
     def save(self, customer):
         db.session.add(customer)
         db.session.commit()
+        current_app.logger.debug(repr(customer))

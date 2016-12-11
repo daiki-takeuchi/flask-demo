@@ -9,3 +9,6 @@ class CustomerService(object):
 
     def find_by_id(self, customer_id):
         return self.repository.find_by_id(customer_id)
+
+    def save(self, customer):
+        return self.repository.save(customer)

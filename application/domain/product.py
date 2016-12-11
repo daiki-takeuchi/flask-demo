@@ -33,10 +33,21 @@ class Product(db.Model):
         self.product_line = product_line
         self.product_scale = product_scale
         self.product_vendor = product_vendor
-        self.product_description = product_description
-        self.quantity_in_stock = quantity_in_stock
-        self.buy_price = buy_price
-        self.msrp = msrp
+        self.product_description = product_description or None
+        self.quantity_in_stock = quantity_in_stock or None
+        self.buy_price = buy_price or None
+        self.msrp = msrp or None
 
     def __repr__(self):
-        return '<Customer {}[ID:{}>'.format(self.customer_name, self.id)
+        return "<Customer:" + \
+                "'id='{}".format(self.id) + \
+                "', product_code='{}".format(self.product_code) + \
+                "', product_name='{}".format(self.product_name) + \
+                "', product_line='{}".format(self.product_line) + \
+                "', product_scale='{}".format(self.product_scale) + \
+                "', product_vendor='{}".format(self.product_vendor) + \
+                "', product_description='{}".format(self.product_description) + \
+                "', quantity_in_stock='{}".format(self.quantity_in_stock) + \
+                "', buy_price='{}".format(self.buy_price) + \
+                "', msrp='{}".format(self.msrp) + \
+                "'>"

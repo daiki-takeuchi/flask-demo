@@ -7,3 +7,4 @@ PASSWORD = 'test_user'
 DATABASE = 'sample_db'
 SQLALCHEMY_DATABASE_URI = 'mysql://' + USER + ':' + PASSWORD + '@' + HOST + ':' + PORT + '/' + DATABASE
 SQLALCHEMY_TRACK_MODIFICATIONS = True
+SECRET_KEY = 'development key'

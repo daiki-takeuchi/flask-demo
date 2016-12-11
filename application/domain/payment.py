@@ -21,7 +21,13 @@ class Payment(db.Model):
         self.customer_number = customer_number
         self.check_number = check_number
         self.payment_date = payment_date
-        self.amount = amount
+        self.amount = amount or None
 
     def __repr__(self):
-        return '<Payment {}[ID:{}>'.format(self.customer_number, self.id)
+        return "<Payment:" + \
+                "'id='{}".format(self.id) + \
+                "', customer_number='{}".format(self.customer_number) + \
+                "', check_number='{}".format(self.check_number) + \
+                "', payment_date='{}".format(self.payment_date) + \
+                "', amount='{}".format(self.amount) + \
+                "'>"

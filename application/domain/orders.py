@@ -26,9 +26,17 @@ class Orders(db.Model):
         self.order_number = order_number
         self.order_date = order_date
         self.required_data = required_data
-        self.shipped_date = shipped_date
-        self.status = status
-        self.comments = comments
+        self.shipped_date = shipped_date or None
+        self.status = status or None
+        self.comments = comments or None
 
     def __repr__(self):
-        return '<Orders {}[ID:{}>'.format(self.order_number, self.id)
+        return "<Orders:" + \
+                "'id='{}".format(self.id) + \
+                "', order_number='{}".format(self.order_number) + \
+                "', order_date='{}".format(self.order_date) + \
+                "', required_data='{}".format(self.required_data) + \
+                "', shipped_date='{}".format(self.shipped_date) + \
+                "', status='{}".format(self.status) + \
+                "', comments='{}".format(self.comments) + \
+                "'>"

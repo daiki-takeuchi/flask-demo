@@ -23,8 +23,15 @@ class OrderDetail(db.Model):
         self.order_number = order_number
         self.product_code = product_code
         self.quantity_ordered = quantity_ordered
-        self.price_each = price_each
-        self.order_line_number = order_line_number
+        self.price_each = price_each or None
+        self.order_line_number = order_line_number or None
 
     def __repr__(self):
-        return '<OrderDetail {}[ID:{}>'.format(self.order_number, self.id)
+        return "<OrderDetail:" + \
+                "'id='{}".format(self.id) + \
+                "', order_number='{}".format(self.order_number) + \
+                "', product_code='{}".format(self.product_code) + \
+                "', quantity_ordered='{}".format(self.quantity_ordered) + \
+                "', price_each='{}".format(self.price_each) + \
+                "', order_line_number='{}".format(self.order_line_number) + \
+                "'>"

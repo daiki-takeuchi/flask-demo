@@ -21,7 +21,13 @@ class ProductLine(db.Model):
         self.product_line = product_line
         self.text_description = text_description
         self.html_description = html_description
-        self.image = image
+        self.image = image or None
 
     def __repr__(self):
-        return '<ProductLine {}[ID:{}>'.format(self.product_line, self.id)
+        return "<ProductLine:" + \
+                "'id='{}".format(self.id) + \
+                "', product_line='{}".format(self.product_line) + \
+                "', text_description='{}".format(self.text_description) + \
+                "', html_description='{}".format(self.html_description) + \
+                "', image='{}".format(self.image) + \
+                "'>"
