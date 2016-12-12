@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-md-12 well">
             <h3>detail - contents</h3>
-            {% if form.id %}
+            {% if form.id.data %}
                 <form action="{{ url_for('.detail', customer_id = form.id.data) }}" method="post">
             {% else %}
-                <form action="{{ url_for('.detail') }}" method="post">
+                <form action="{{ url_for('.create') }}" method="post">
             {% endif %}
                 {{ form.hidden_tag() }}
 

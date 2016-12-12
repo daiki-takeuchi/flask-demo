@@ -27,14 +27,17 @@ def customer_page(page=1):
 
 
 @bp.route('/detail/<customer_id>', methods=['GET', 'POST'])
-@bp.route('/create', methods=['GET', 'POST'])
 def detail(customer_id=None):
-    customer = service.find_by_id(customer_id)
+    if customer_id is not None:
+        customer = service.find_by_id(customer_id)
+    else:
+        customer = Customer()
+    current_app.logger.debug(str(customer))
+
     if customer is None and customer_id is not None:
         return abort(404)
-    if customer is None:
-        customer = Customer()
     form = CustomerForm(request.form, customer)
+
     if request.method == 'POST' and form.validate():
         customer.customer_number = request.form['customer_number']
         customer.customer_name = request.form['customer_name']
@@ -54,6 +57,11 @@ def detail(customer_id=None):
         return redirect(url_for('.detail', customer_id=customer.id))
     current_app.logger.debug(form.errors)
     return render_template('customer/detail.html', form=form)
+
+
+@bp.route('/create', methods=['GET', 'POST'])
+def create():
+    return detail()
 
 
 @bp.route('/delete/<customer_id>', methods=['GET'])
