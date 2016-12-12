@@ -11,14 +11,14 @@ class CustomerRepository(object):
         return pagination
 
     def find_by_id(self, customer_id):
-        return Customer.query.filter(Customer.id == customer_id).one()
+        return Customer.query.filter(Customer.id == customer_id).first()
 
     def save(self, customer):
         db.session.add(customer)
         db.session.commit()
-        current_app.logger.debug(repr(customer))
+        current_app.logger.debug('save:' + str(customer))
 
     def destroy(self, customer):
         db.session.delete(customer)
         db.session.commit()
-        current_app.logger.debug(repr(customer))
+        current_app.logger.debug('destroy:' + str(customer))

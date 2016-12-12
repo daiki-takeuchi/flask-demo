@@ -9,7 +9,7 @@ class ProductRepository(object):
         return pagination
 
     def find_by_id(self, product_id):
-        return Product.query.filter(Product.id ==  product_id).one()
+        return Product.query.filter(Product.id == product_id).first()
 
     def save(self, product):
         db.session.add(product)

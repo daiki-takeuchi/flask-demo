@@ -9,7 +9,7 @@ class PaymentRepository(object):
         return pagination
 
     def find_by_id(self, payment_id):
-        return Payment.query.filter(Payment.id ==  payment_id).one()
+        return Payment.query.filter(Payment.id ==  payment_id).first()
 
     def save(self, payment):
         db.session.add(payment)

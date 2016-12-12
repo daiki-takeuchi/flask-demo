@@ -6,14 +6,18 @@
     <div class="row">
         <div class="col-md-12 well">
             <h3>detail - contents</h3>
-            <form action="{{ url_for('.detail', customer_id = form.id.data) }}" method="post">
+            {% if form.id %}
+                <form action="{{ url_for('.detail', customer_id = form.id.data) }}" method="post">
+            {% else %}
+                <form action="{{ url_for('.detail') }}" method="post">
+            {% endif %}
                 {{ form.hidden_tag() }}
 
                 <table class="table">
                     <tbody>
                     <tr>
                         <th class="field-label col-xs-3 active">{{ form.id.label }}</th>
-                        <td class="col-md-9">{{ form.id.data }}</td>
+                        <td class="col-md-9">{{ form.id.data|filter_suppress_none }}</td>
                     </tr>
                     <tr>
                         <th class="field-label col-xs-3 active">{{ form.customer_number.label }}</th>

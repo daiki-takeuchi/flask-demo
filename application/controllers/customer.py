@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import abort
 from flask import current_app
 from flask import redirect
 from flask import render_template
@@ -26,8 +27,13 @@ def customer_page(page=1):
 
 
 @bp.route('/detail/<customer_id>', methods=['GET', 'POST'])
-def detail(customer_id):
+@bp.route('/new', methods=['GET', 'POST'])
+def detail(customer_id=None):
     customer = service.find_by_id(customer_id)
+    if customer is None and customer_id is not None:
+        return abort(404)
+    if customer is None:
+        customer = Customer()
     form = CustomerForm(request.form, customer)
     if request.method == 'POST' and form.validate():
         customer.customer_number = request.form['customer_number']
@@ -45,12 +51,15 @@ def detail(customer_id):
         customer.credit_limit = request.form['credit_limit'] or None
 
         service.save(customer)
-        current_app.logger.debug(form.errors)
         return redirect(url_for('.detail', customer_id=customer.id))
+    current_app.logger.debug(form.errors)
     return render_template('customer/detail.html', form=form)
 
 
 @bp.route('/delete/<customer_id>', methods=['GET'])
 def delete(customer_id):
     customer = service.find_by_id(customer_id)
+    if customer is None:
+        return redirect('/customer')
     service.destroy(customer)
+    return redirect('/customer')

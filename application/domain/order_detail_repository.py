@@ -9,7 +9,7 @@ class OrderDetailRepository(object):
         return pagination
 
     def find_by_id(self, order_detail_id):
-        return OrderDetail.query.filter(OrderDetail.id == order_detail_id).one()
+        return OrderDetail.query.filter(OrderDetail.id == order_detail_id).first()
 
     def save(self, order_detail):
         db.session.add(order_detail)
