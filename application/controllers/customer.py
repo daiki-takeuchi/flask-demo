@@ -27,7 +27,7 @@ def customer_page(page=1):
 
 
 @bp.route('/detail/<customer_id>', methods=['GET', 'POST'])
-@bp.route('/new', methods=['GET', 'POST'])
+@bp.route('/create', methods=['GET', 'POST'])
 def detail(customer_id=None):
     customer = service.find_by_id(customer_id)
     if customer is None and customer_id is not None:
