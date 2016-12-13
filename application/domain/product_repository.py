@@ -1,3 +1,5 @@
+from flask import current_app
+
 from application import db
 from application.domain.product import Product
 
@@ -14,3 +16,9 @@ class ProductRepository(object):
     def save(self, product):
         db.session.add(product)
         db.session.commit()
+        current_app.logger.debug('save:' + str(product))
+
+    def destroy(self, product):
+        db.session.delete(product)
+        db.session.commit()
+        current_app.logger.debug('destroy:' + str(product))

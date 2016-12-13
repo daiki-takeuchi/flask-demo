@@ -7,10 +7,17 @@
   <div class="col-md-12 well">
     <h3>index - contents</h3>
 
-    {% if pagination %}
-    {% if pagination.total > pagination.per_page %}
-        {{ p.pagination_widget(pagination,'.product_page') }}
-    {% endif %}
+    <div class="row">
+      <div class="col-md-7">
+        {% if pagination %}
+        {% if pagination.total > pagination.per_page %}
+          {{ p.pagination_widget(pagination,'.product_page') }}
+        {% endif %}
+      </div>
+      <div class="col-md-1">
+        <a class="btn btn-success" href="{{ url_for('.create') }}" style="margin: 20px 0;">create</a>
+      </div>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -24,6 +31,7 @@
           <th>buy Price</th>
           <th>MSRP</th>
           <th>detail</th>
+          <th>delete</th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +48,9 @@
           <td>{{ product.msrp }}</td>
           <td>
             <a class="btn btn-default" href="/product/detail/{{ product.id }}">detail</a>
+          </td>
+          <td>
+            <a class="btn btn-danger" href="/product/delete/{{ product.id }}">delete</a>
           </td>
         </tr>
         {% endfor %}

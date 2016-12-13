@@ -6,32 +6,38 @@
   <div class="col-md-12 well">
     <h3>detail - contents</h3>
 
-    {% if payment %}
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="field-label col-xs-3 active">id</th>
-          <td class="col-md-9">{{ payment.id }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">customer Number</th>
-          <td class="col-md-9">{{ payment.customer_number }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">check Number</th>
-          <td class="col-md-9">{{ payment.check_number }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">payment Date</th>
-          <td class="col-md-9">{{ payment.payment_date|datetime_format("%Y/%m/%d") }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">amount</th>
-          <td class="col-md-9">{{ payment.amount }}</td>
-        </tr>
-      </tbody>
-    </table>
+    {% if form.id.data %}
+    <form action="{{ url_for('.detail', payment_id = form.id.data) }}" method="post">
+    {% else %}
+    <form action="{{ url_for('.create') }}" method="post">
     {% endif %}
+    {{ form.hidden_tag() }}
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.id.label }}</th>
+            <td class="col-md-9">{{ form.id.data|filter_suppress_none }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.customer_number.label }}</th>
+            <td class="col-md-9">{{ form.customer_number }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.check_number.label }}</th>
+            <td class="col-md-9">{{ form.check_number }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.payment_date.label }}</th>
+            <td class="col-md-9">{{ form.payment_date }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.amount.label }}</th>
+            <td class="col-md-9">{{ form.amount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    {{ form.submit }}
+    </form>
 
   </div>
 </div>

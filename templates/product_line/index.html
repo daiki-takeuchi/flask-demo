@@ -7,10 +7,17 @@
   <div class="col-md-12 well">
     <h3>index - contents</h3>
 
-    {% if pagination %}
-    {% if pagination.total > pagination.per_page %}
-        {{ p.pagination_widget(pagination,'.product_line_page') }}
-    {% endif %}
+    <div class="row">
+      <div class="col-md-7">
+        {% if pagination %}
+        {% if pagination.total > pagination.per_page %}
+          {{ p.pagination_widget(pagination,'.product_line_page') }}
+        {% endif %}
+      </div>
+      <div class="col-md-1">
+        <a class="btn btn-success" href="{{ url_for('.create') }}" style="margin: 20px 0;">create</a>
+      </div>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -19,6 +26,8 @@
           <th>text Description</th>
           <th>html Description</th>
           <th>image</th>
+          <th>detail</th>
+          <th>delete</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +40,9 @@
           <td>{{ product_line.image|filter_suppress_none }}</td>
           <td>
             <a class="btn btn-default" href="/productline/detail/{{ product_line.id }}">detail</a>
+          </td>
+          <td>
+            <a class="btn btn-danger" href="/productline/delete/{{ product_line.id }}">delete</a>
           </td>
         </tr>
         {% endfor %}

@@ -9,3 +9,9 @@ class PaymentService(object):
 
     def find_by_id(self, payment_id):
         return self.repository.find_by_id(payment_id)
+
+    def save(self, payment):
+        return self.repository.save(payment)
+
+    def destroy(self, payment):
+        return self.repository.destroy(payment)

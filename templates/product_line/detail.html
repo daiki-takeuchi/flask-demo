@@ -1,37 +1,43 @@
 {% extends "layout.html" %}
-{% block title %}product{% endblock %}
+{% block title %}product_line{% endblock %}
 {% block body %}
 <!-- partial1 start -->
 <div class="row">
   <div class="col-md-12 well">
     <h3>detail - contents</h3>
 
-    {% if product_line %}
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="field-label col-xs-3 active">id</th>
-          <td class="col-md-9">{{ product_line.id }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">productLine</th>
-          <td class="col-md-9">{{ product_line.product_line }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">textDescription</th>
-          <td class="col-md-9">{{ product_line.text_description }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">htmlDescription</th>
-          <td class="col-md-9">{{ product_line.html_description|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">image</th>
-          <td class="col-md-9">{{ product_line.image|filter_suppress_none }}</td>
-        </tr>
-      </tbody>
-    </table>
+    {% if form.id.data %}
+    <form action="{{ url_for('.detail', product_line_id = form.id.data) }}" method="post">
+    {% else %}
+    <form action="{{ url_for('.create') }}" method="post">
     {% endif %}
+    {{ form.hidden_tag() }}
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.id.label }}</th>
+            <td class="col-md-9">{{ form.id.data|filter_suppress_none }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.product_line.label }}</th>
+            <td class="col-md-9">{{ form.product_line }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.text_description.label }}</th>
+            <td class="col-md-9">{{ form.text_description }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.html_description.label }}</th>
+            <td class="col-md-9">{{ form.html_description }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.image.label }}</th>
+            <td class="col-md-9">{{ form.image }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {{ form.submit }}
+    </form>
 
   </div>
 </div>

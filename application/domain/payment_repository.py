@@ -1,3 +1,5 @@
+from flask import current_app
+
 from application import db
 from application.domain.payment import Payment
 
@@ -14,3 +16,9 @@ class PaymentRepository(object):
     def save(self, payment):
         db.session.add(payment)
         db.session.commit()
+        current_app.logger.debug('save:' + str(payment))
+
+    def destroy(self, payment):
+        db.session.delete(payment)
+        db.session.commit()
+        current_app.logger.debug('destroy:' + str(payment))
