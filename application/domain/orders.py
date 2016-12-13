@@ -35,7 +35,7 @@ class Orders(db.Model):
                 "'id='{}".format(self.id) + \
                 "', order_number='{}".format(self.order_number) + \
                 "', order_date='{}".format(self.order_date) + \
-                "', required_data='{}".format(self.required_data) + \
+                "', required_date='{}".format(self.required_date) + \
                 "', shipped_date='{}".format(self.shipped_date) + \
                 "', status='{}".format(self.status) + \
                 "', comments='{}".format(self.comments) + \

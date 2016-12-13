@@ -1,3 +1,5 @@
+from flask import current_app
+
 from application import db
 from application.domain.order_detail import OrderDetail
 
@@ -14,3 +16,9 @@ class OrderDetailRepository(object):
     def save(self, order_detail):
         db.session.add(order_detail)
         db.session.commit()
+        current_app.logger.debug('save:' + str(order_detail))
+
+    def destroy(self, order_detail):
+        db.session.delete(order_detail)
+        db.session.commit()
+        current_app.logger.debug('destroy:' + str(order_detail))

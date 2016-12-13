@@ -6,11 +6,17 @@
 <div class="row">
   <div class="col-md-12 well">
     <h3>index - contents</h3>
-
-    {% if pagination %}
-    {% if pagination.total > pagination.per_page %}
-        {{ p.pagination_widget(pagination,'.orders_page') }}
-    {% endif %}
+    <div class="row">
+      <div class="col-md-7">
+        {% if pagination %}
+        {% if pagination.total > pagination.per_page %}
+          {{ p.pagination_widget(pagination,'.orders_page') }}
+        {% endif %}
+      </div>
+      <div class="col-md-1">
+        <a class="btn btn-success" href="{{ url_for('.create') }}" style="margin: 20px 0;">create</a>
+      </div>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -23,21 +29,25 @@
           <th>status</th>
           <th>customer Number</th>
           <th>detail</th>
+          <th>delete</th>
         </tr>
       </thead>
       <tbody>
-      {% for order in pagination.items %}
+      {% for orders in pagination.items %}
         <tr>
           <td>{{ (pagination.prev_num * pagination.per_page) + loop.index }}</td>
-          <td>{{ order.id }}</td>
-          <td>{{ order.order_number }}</td>
-          <td>{{ order.order_date|datetime_format("%Y/%m/%d") }}</td>
-          <td>{{ order.required_date|datetime_format("%Y/%m/%d") }}</td>
-          <td>{{ order.shipped_date|datetime_format("%Y/%m/%d") }}</td>
-          <td>{{ order.status }}</td>
-          <td>{{ order.customer_number }}</td>
+          <td>{{ orders.id }}</td>
+          <td>{{ orders.order_number }}</td>
+          <td>{{ orders.order_date|datetime_format("%Y/%m/%d") }}</td>
+          <td>{{ orders.required_date|datetime_format("%Y/%m/%d") }}</td>
+          <td>{{ orders.shipped_date|datetime_format("%Y/%m/%d") }}</td>
+          <td>{{ orders.status|filter_suppress_none }}</td>
+          <td>{{ orders.customer_number|filter_suppress_none }}</td>
           <td>
-            <a class="btn btn-default" href="/orders/detail/{{ order.id }}">detail</a>
+            <a class="btn btn-default" href="/orders/detail/{{ orders.id }}">detail</a>
+          </td>
+          <td>
+            <a class="btn btn-danger" href="/orders/delete/{{ orders.id }}">delete</a>
           </td>
         </tr>
         {% endfor %}

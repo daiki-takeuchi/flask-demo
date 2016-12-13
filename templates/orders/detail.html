@@ -6,44 +6,50 @@
   <div class="col-md-12 well">
     <h3>detail - contents</h3>
 
-    {% if order %}
-    <table class="table">
-      <tbody>
-        <tr>
-          <th class="field-label col-xs-3 active">id</th>
-          <td class="col-md-9">{{ order.id }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">order Number</th>
-          <td class="col-md-9">{{ order.order_number }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">order Date</th>
-          <td class="col-md-9">{{ order.order_date|datetime_format("%Y/%m/%d") }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">required Date</th>
-          <td class="col-md-9">{{ order.required_date|datetime_format("%Y/%m/%d") }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">shipped Date</th>
-          <td class="col-md-9">{{ order.shipped_date|datetime_format("%Y/%m/%d") }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">status</th>
-          <td class="col-md-9">{{ order.status }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">comments</th>
-          <td class="col-md-9">{{ order.comments|filter_suppress_none }}</td>
-        </tr>
-        <tr>
-          <th class="field-label col-xs-3 active">customer Number</th>
-          <td class="col-md-9">{{ order.customer_number }}</td>
-        </tr>
-      </tbody>
-    </table>
+    {% if form.id.data %}
+    <form action="{{ url_for('.detail', orders_id = form.id.data) }}" method="post">
+    {% else %}
+    <form action="{{ url_for('.create') }}" method="post">
     {% endif %}
+    {{ form.hidden_tag() }}
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.id.label }}</th>
+            <td class="col-md-9">{{ form.id.data|filter_suppress_none }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.order_number.label }}</th>
+            <td class="col-md-9">{{ form.order_number }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.order_date.label }}</th>
+            <td class="col-md-9">{{ form.order_date }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.required_date.label }}</th>
+            <td class="col-md-9">{{ form.required_date }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.shipped_date.label }}</th>
+            <td class="col-md-9">{{ form.shipped_date }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.status.label }}</th>
+            <td class="col-md-9">{{ form.status }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.comments.label }}</th>
+            <td class="col-md-9">{{ form.comments }}</td>
+          </tr>
+          <tr>
+            <th class="field-label col-xs-3 active">{{ form.customer_number.label }}</th>
+            <td class="col-md-9">{{ form.customer_number }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {{ form.submit }}
+    </form>
 
   </div>
 </div>
