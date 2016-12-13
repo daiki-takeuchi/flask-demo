@@ -40,9 +40,9 @@ def detail(product_line_id=None):
 
     if request.method == 'POST' and form.validate():
         product_line.product_line = request.form['product_line']
-        product_line.text_description = request.form['text_description']
-        product_line.html_description = request.form['html_description']
-        product_line.image = request.form['image']
+        product_line.text_description = request.form['text_description'] or None
+        product_line.html_description = request.form['html_description'] or None
+        product_line.image = request.form['image'] or None
 
         service.save(product_line)
         return redirect(url_for('.detail', product_line_id=product_line.id))

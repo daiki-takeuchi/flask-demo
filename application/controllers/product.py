@@ -44,10 +44,10 @@ def detail(product_id=None):
         product.product_line = request.form['product_line']
         product.product_scale = request.form['product_scale']
         product.product_vendor = request.form['product_vendor']
-        product.product_description = request.form['product_description']
-        product.quantity_in_stock = request.form['quantity_in_stock']
-        product.buy_price = request.form['buy_price']
-        product.msrp = request.form['msrp']
+        product.product_description = request.form['product_description'] or None
+        product.quantity_in_stock = request.form['quantity_in_stock'] or None
+        product.buy_price = request.form['buy_price'] or None
+        product.msrp = request.form['msrp'] or None
 
         service.save(product)
         return redirect(url_for('.detail', product_id=product.id))
