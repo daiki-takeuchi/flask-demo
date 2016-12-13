@@ -53,10 +53,10 @@
           <td>{{ customer.sales_rep_employee_number|filter_suppress_none }}</td>
           <td>{{ customer.credit_limit|filter_suppress_none }}</td>
           <td>
-            <a class="btn btn-default" href="/customer/detail/{{ customer.id }}">detail</a>
+            <a class="btn btn-default" href="{{ url_for('.detail', customer_id=customer.id) }}">detail</a>
           </td>
           <td>
-            <a class="btn btn-danger" href="/customer/delete/{{ customer.id }}">delete</a>
+            <a class="btn btn-danger" href="{{ url_for('.delete', customer_id=customer.id) }}">delete</a>
           </td>
         </tr>
         {% endfor %}

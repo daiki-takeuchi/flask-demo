@@ -10,7 +10,7 @@ from application.controllers.form.product_line_form import ProductLineForm
 from application.domain.product_line import ProductLine
 from application.service.product_line_service import ProductLineService
 
-bp = Blueprint('product_line', __name__, url_prefix='/productline')
+bp = Blueprint('product_line', __name__, url_prefix='/product_line')
 service = ProductLineService()
 
 
@@ -57,8 +57,8 @@ def create():
 
 @bp.route('/delete/<product_line_id>', methods=['GET'])
 def delete(product_line_id):
-    orders = service.find_by_id(product_line_id)
-    if orders is None:
+    product_line = service.find_by_id(product_line_id)
+    if product_line is None:
         return redirect('/product_line')
-    service.destroy(orders)
+    service.destroy(product_line)
     return redirect('/product_line')

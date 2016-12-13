@@ -39,10 +39,10 @@
           <td>{{ product_line.html_description|filter_suppress_none }}</td>
           <td>{{ product_line.image|filter_suppress_none }}</td>
           <td>
-            <a class="btn btn-default" href="/productline/detail/{{ product_line.id }}">detail</a>
+            <a class="btn btn-default" href="{{ url_for('.detail', product_line_id=product_line.id) }}">detail</a>
           </td>
           <td>
-            <a class="btn btn-danger" href="/productline/delete/{{ product_line.id }}">delete</a>
+            <a class="btn btn-danger" href="{{ url_for('.delete', product_line_id=product_line.id) }}">delete</a>
           </td>
         </tr>
         {% endfor %}

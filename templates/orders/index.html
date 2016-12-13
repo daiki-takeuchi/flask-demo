@@ -44,10 +44,10 @@
           <td>{{ orders.status|filter_suppress_none }}</td>
           <td>{{ orders.customer_number|filter_suppress_none }}</td>
           <td>
-            <a class="btn btn-default" href="/orders/detail/{{ orders.id }}">detail</a>
+            <a class="btn btn-default" href="{{ url_for('.detail', orders_id=orders.id) }}">detail</a>
           </td>
           <td>
-            <a class="btn btn-danger" href="/orders/delete/{{ orders.id }}">delete</a>
+            <a class="btn btn-danger" href="{{ url_for('.delete', orders_id=orders.id) }}">delete</a>
           </td>
         </tr>
         {% endfor %}

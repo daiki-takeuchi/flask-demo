@@ -47,10 +47,10 @@
           <td>{{ product.buy_price }}</td>
           <td>{{ product.msrp }}</td>
           <td>
-            <a class="btn btn-default" href="/product/detail/{{ product.id }}">detail</a>
+            <a class="btn btn-default" href="{{ url_for('.detail', product_id=product.id) }}">detail</a>
           </td>
           <td>
-            <a class="btn btn-danger" href="/product/delete/{{ product.id }}">delete</a>
+            <a class="btn btn-danger" href="{{ url_for('.delete', product_id=product.id) }}">delete</a>
           </td>
         </tr>
         {% endfor %}

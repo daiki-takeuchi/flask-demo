@@ -57,8 +57,8 @@ def create():
 
 @bp.route('/delete/<payment_id>', methods=['GET'])
 def delete(payment_id):
-    orders = service.find_by_id(payment_id)
-    if orders is None:
+    payment = service.find_by_id(payment_id)
+    if payment is None:
         return redirect('/payment')
-    service.destroy(orders)
+    service.destroy(payment)
     return redirect('/payment')

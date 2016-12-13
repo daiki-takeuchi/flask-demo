@@ -62,8 +62,8 @@ def create():
 
 @bp.route('/delete/<product_id>', methods=['GET'])
 def delete(product_id):
-    orders = service.find_by_id(product_id)
-    if orders is None:
+    product = service.find_by_id(product_id)
+    if product is None:
         return redirect('/product')
-    service.destroy(orders)
+    service.destroy(product)
     return redirect('/product')
