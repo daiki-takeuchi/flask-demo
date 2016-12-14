@@ -43,9 +43,9 @@
           <td>{{ product.product_line }}</td>
           <td>{{ product.product_scale }}</td>
           <td>{{ product.product_vendor }}</td>
-          <td>{{ product.quantity_in_stock }}</td>
-          <td>{{ product.buy_price }}</td>
-          <td>{{ product.msrp }}</td>
+          <td>{{ product.quantity_in_stock|filter_suppress_none }}</td>
+          <td>{{ product.buy_price|filter_suppress_none }}</td>
+          <td>{{ product.msrp|filter_suppress_none }}</td>
           <td>
             <a class="btn btn-default" href="{{ url_for('.detail', product_id=product.id) }}">detail</a>
           </td>

@@ -35,7 +35,7 @@
         <tr>
           <td>{{ (pagination.prev_num * pagination.per_page) + loop.index }}</td>
           <td>{{ product_line.product_line }}</td>
-          <td>{{ product_line.text_description }}</td>
+          <td>{{ product_line.text_description|filter_suppress_none }}</td>
           <td>{{ product_line.html_description|filter_suppress_none }}</td>
           <td>{{ product_line.image|filter_suppress_none }}</td>
           <td>
