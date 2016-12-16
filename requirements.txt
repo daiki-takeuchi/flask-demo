@@ -4,4 +4,4 @@ Flask-WTF==0.13.1
 gunicorn==19.6.0
 PyMySQL==0.7.9
 SQLAlchemy==1.1.4
-gcs-oauth2-boto-plugin==1.9
+gcloud==0.18.3

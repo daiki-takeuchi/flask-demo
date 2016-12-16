@@ -6,9 +6,10 @@ from flask import render_template
 from flask import request
 from flask import url_for
 
-from application.controllers.form.customer_form import CustomerForm
+from application.controllers.form.customer_form import CustomerForm, PhotoForm
 from application.domain.customer import Customer
 from application.service.customer_service import CustomerService
+from application.service.google import storage
 
 bp = Blueprint('customer', __name__, url_prefix='/customer')
 service = CustomerService()
@@ -37,26 +38,35 @@ def detail(customer_id=None):
     if customer is None and customer_id is not None:
         return abort(404)
     form = CustomerForm(request.form, customer)
+    photo = PhotoForm()
 
-    if request.method == 'POST' and form.validate():
-        customer.customer_number = request.form['customer_number']
-        customer.customer_name = request.form['customer_name']
-        customer.contact_last_name = request.form['contact_last_name']
-        customer.contact_first_name = request.form['contact_first_name']
-        customer.phone = request.form['phone'] or None
-        customer.address_line1 = request.form['address_line1'] or None
-        customer.address_line2 = request.form['address_line2'] or None
-        customer.city = request.form['city'] or None
-        customer.state = request.form['state'] or None
-        customer.postal_code = request.form['postal_code'] or None
-        customer.country = request.form['country'] or None
-        customer.sales_rep_employee_number = request.form['sales_rep_employee_number'] or None
-        customer.credit_limit = request.form['credit_limit'] or None
+    if form.validate_on_submit():
+        customer.customer_number = form.customer_number.data
+        customer.customer_name = form.customer_name.data
+        customer.contact_last_name = form.contact_last_name.data
+        customer.contact_first_name = form.contact_first_name.data
+        customer.phone = form.phone.data or None
+        customer.address_line1 = form.address_line1.data or None
+        customer.address_line2 = form.address_line2.data or None
+        customer.city = form.city.data or None
+        customer.state = form.state.data or None
+        customer.postal_code = form.postal_code.data or None
+        customer.country = form.country.data or None
+        customer.sales_rep_employee_number = form.sales_rep_employee_number.data or None
+        customer.credit_limit = form.credit_limit.data or None
+        file = photo.upload.data or None
+        public_url = storage.upload_file(
+            file.read(),
+            file.filename,
+            file.content_type
+        )
+        current_app.logger.debug(
+            "Uploaded file %s as %s.", file.filename, public_url)
 
         service.save(customer)
         return redirect(url_for('.detail', customer_id=customer.id))
     current_app.logger.debug(form.errors)
-    return render_template('customer/detail.html', form=form)
+    return render_template('customer/detail.html', form=form, photo=photo)
 
 
 @bp.route('/create', methods=['GET', 'POST'])

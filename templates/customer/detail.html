@@ -7,9 +7,9 @@
         <div class="col-md-12 well">
             <h3>detail - contents</h3>
             {% if form.id.data %}
-                <form action="{{ url_for('.detail', customer_id = form.id.data) }}" method="post">
+                <form action="{{ url_for('.detail', customer_id = form.id.data) }}" method="post" enctype="multipart/form-data">
             {% else %}
-                <form action="{{ url_for('.create') }}" method="post">
+                <form action="{{ url_for('.create') }}" method="post" enctype="multipart/form-data">
             {% endif %}
                 {{ form.hidden_tag() }}
 
@@ -70,6 +70,10 @@
                     <tr>
                         <th class="field-label col-xs-3 active">{{ form.credit_limit.label }}</th>
                         <td class="col-md-9">{{ form.credit_limit }}</td>
+                    </tr>
+                    <tr>
+                        <th class="field-label col-xs-3 active">{{ photo.upload.label }}</th>
+                        <td class="col-md-9">{{ photo.upload }}</td>
                     </tr>
                     </tbody>
                 </table>

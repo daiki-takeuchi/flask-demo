@@ -1,5 +1,10 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import validators, StringField, SubmitField, IntegerField, DecimalField
+
+from application.domain.upload_set import UploadSet
+
+images = UploadSet('images', ['jpg', 'png'])
 
 
 class CustomerForm(FlaskForm):
@@ -18,3 +23,7 @@ class CustomerForm(FlaskForm):
     sales_rep_employee_number = IntegerField('Sales Rep Employee Number', [validators.optional()])
     credit_limit = DecimalField('Credit Limit', [validators.optional()])
     submit = SubmitField("Send")
+
+
+class PhotoForm(FlaskForm):
+    upload = FileField("Upload file", validators=[FileAllowed(images)])
