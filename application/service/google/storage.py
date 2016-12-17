@@ -4,7 +4,7 @@ import six
 from flask import current_app
 from gcloud import storage
 from werkzeug.exceptions import BadRequest
-from werkzeug.utils import secure_filename
+# from werkzeug.utils import secure_filename
 
 
 def _get_storage_client():
@@ -25,7 +25,7 @@ def _safe_filename(filename):
     in Google Cloud Storage.
     ``filename.ext`` is transformed into ``filename-YYYY-MM-DD-HHMMSS.ext``
     """
-    filename = secure_filename(filename)
+    # filename = secure_filename(filename)
     date = datetime.datetime.utcnow().strftime("%Y-%m-%d-%H%M%S")
     basename, extension = filename.rsplit('.', 1)
     return "{0}-{1}.{2}".format(basename, date, extension)

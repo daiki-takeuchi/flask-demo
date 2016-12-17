@@ -55,13 +55,15 @@ def detail(customer_id=None):
         customer.sales_rep_employee_number = form.sales_rep_employee_number.data or None
         customer.credit_limit = form.credit_limit.data or None
         file = photo.upload.data or None
-        public_url = storage.upload_file(
-            file.read(),
-            file.filename,
-            file.content_type
-        )
-        current_app.logger.debug(
-            "Uploaded file %s as %s.", file.filename, public_url)
+
+        if file is not None:
+            public_url = storage.upload_file(
+                file.read(),
+                file.filename,
+                file.content_type
+            )
+            current_app.logger.debug(
+                "Uploaded file %s as %s.", file.filename, public_url)
 
         service.save(customer)
         return redirect(url_for('.detail', customer_id=customer.id))
