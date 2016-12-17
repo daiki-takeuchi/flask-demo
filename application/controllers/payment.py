@@ -38,11 +38,11 @@ def detail(payment_id=None):
         return abort(404)
     form = PaymentForm(request.form, payment)
 
-    if request.method == 'POST' and form.validate():
-        payment.customer_number = request.form['customer_number']
-        payment.check_number = request.form['check_number']
-        payment.payment_date = request.form['payment_date']
-        payment.amount = request.form['amount']
+    if form.validate_on_submit():
+        payment.customer_number = form.customer_number.data
+        payment.check_number = form.check_number.data
+        payment.payment_date = form.payment_date.data
+        payment.amount = form.amount.data
 
         service.save(payment)
         return redirect(url_for('.detail', payment_id=payment.id))

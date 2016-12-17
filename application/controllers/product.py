@@ -38,16 +38,16 @@ def detail(product_id=None):
         return abort(404)
     form = ProductForm(request.form, product)
 
-    if request.method == 'POST' and form.validate():
-        product.product_code = request.form['product_code']
-        product.product_name = request.form['product_name']
-        product.product_line = request.form['product_line']
-        product.product_scale = request.form['product_scale']
-        product.product_vendor = request.form['product_vendor']
-        product.product_description = request.form['product_description'] or None
-        product.quantity_in_stock = request.form['quantity_in_stock'] or None
-        product.buy_price = request.form['buy_price'] or None
-        product.msrp = request.form['msrp'] or None
+    if form.validate_on_submit():
+        product.product_code = form.product_code.data
+        product.product_name = form.product_name.data
+        product.product_line = form.product_line.data
+        product.product_scale = form.product_scale.data
+        product.product_vendor = form.product_vendor.data
+        product.product_description = form.product_description.data or None
+        product.quantity_in_stock = form.quantity_in_stock.data or None
+        product.buy_price = form.buy_price.data or None
+        product.msrp = form.msrp.data or None
 
         service.save(product)
         return redirect(url_for('.detail', product_id=product.id))

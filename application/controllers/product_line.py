@@ -38,11 +38,11 @@ def detail(product_line_id=None):
         return abort(404)
     form = ProductLineForm(request.form, product_line)
 
-    if request.method == 'POST' and form.validate():
-        product_line.product_line = request.form['product_line']
-        product_line.text_description = request.form['text_description'] or None
-        product_line.html_description = request.form['html_description'] or None
-        product_line.image = request.form['image'] or None
+    if form.validate_on_submit():
+        product_line.product_line = form.product_line.data
+        product_line.text_description = form.text_description.data or None
+        product_line.html_description = form.html_description.data or None
+        product_line.image = form.image.data or None
 
         service.save(product_line)
         return redirect(url_for('.detail', product_line_id=product_line.id))

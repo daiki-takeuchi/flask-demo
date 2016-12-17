@@ -38,14 +38,14 @@ def detail(orders_id=None):
         return abort(404)
     form = OrdersForm(request.form, orders)
 
-    if request.method == 'POST' and form.validate():
-        orders.order_number = request.form['order_number']
-        orders.order_date = request.form['order_date']
-        orders.required_date = request.form['required_date']
-        orders.shipped_date = request.form['shipped_date'] or None
-        orders.status = request.form['status'] or None
-        orders.comments = request.form['comments'] or None
-        orders.customer_number = request.form['customer_number'] or None
+    if form.validate_on_submit():
+        orders.order_number = form.order_number.data
+        orders.order_date = form.order_date.data
+        orders.required_date = form.required_date.data
+        orders.shipped_date = form.shipped_date.data or None
+        orders.status = form.status.data or None
+        orders.comments = form.comments.data or None
+        orders.customer_number = form.customer_number.data or None
 
         service.save(orders)
         return redirect(url_for('.detail', orders_id=orders.id))
